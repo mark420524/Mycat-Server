@@ -91,7 +91,7 @@ public class BatchInsertSequence implements Catlet {
 				insert.getColumns().add(sqlIdentifierExpr);
 				
 				if(sequenceHandler == null){
-					int seqHandlerType = MycatServer.getInstance().getConfig().getSystem().getSequnceHandlerType();
+					int seqHandlerType = MycatServer.getInstance().getConfig().getSystem().getSequenceHandlerType();
 					switch(seqHandlerType){
 						case SystemConfig.SEQUENCEHANDLER_MYSQLDB:
 							sequenceHandler = IncrSequenceMySQLHandler.getInstance();
