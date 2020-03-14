@@ -157,7 +157,9 @@ public final class SystemConfig {
 	 * 比如MariaDB目前版本号已经到10.1.x，但是其驱动程序仍然兼容官方的MySQL,因此这里版本号只需要MySQL官方的版本号即可。
 	 */
 	public static final String[] MySQLVersions = { "5.5", "5.6", "5.7" };
-	private int sequnceHandlerType = SEQUENCEHANDLER_LOCALFILE;
+	private int sequenceHandlerType = SEQUENCEHANDLER_LOCALFILE;
+	/** 默认数据库序列 节点*/
+	private String defaultSequenceDataNode ;
 	private String sqlInterceptor = "io.mycat.server.interceptor.impl.DefaultSqlInterceptor";
 	private String sqlInterceptorType = "select";
 	private String sqlInterceptorFile = System.getProperty("user.dir")+"/logs/sql.txt";
@@ -416,13 +418,7 @@ public final class SystemConfig {
 		this.sqlInterceptor = sqlInterceptor;
 	}
 
-	public int getSequnceHandlerType() {
-		return sequnceHandlerType;
-	}
 
-	public void setSequnceHandlerType(int sequnceHandlerType) {
-		this.sequnceHandlerType = sequnceHandlerType;
-	}
 
 	public int getPacketHeaderSize() {
 		return packetHeaderSize;
@@ -458,6 +454,22 @@ public final class SystemConfig {
 
 	public String getBindIp() {
 		return bindIp;
+	}
+
+	public int getSequenceHandlerType() {
+		return sequenceHandlerType;
+	}
+
+	public void setSequenceHandlerType(int sequenceHandlerType) {
+		this.sequenceHandlerType = sequenceHandlerType;
+	}
+
+	public String getDefaultSequenceDataNode() {
+		return defaultSequenceDataNode;
+	}
+
+	public void setDefaultSequenceDataNode(String defaultSequenceDataNode) {
+		this.defaultSequenceDataNode = defaultSequenceDataNode;
 	}
 
 	public void setBindIp(String bindIp) {
@@ -926,7 +938,7 @@ public final class SystemConfig {
 				+ ", flowControlRejectStrategy="+flowControlRejectStrategy
 				+ ", clearBigSqLResultSetMapMs="+clearBigSqLResultSetMapMs
 				+ ", defaultMaxLimit=" + defaultMaxLimit
-				+ ", sequnceHandlerType=" + sequnceHandlerType
+				+ ", sequenceHandlerType=" + sequenceHandlerType
 				+ ", sqlInterceptor=" + sqlInterceptor
 				+ ", sqlInterceptorType=" + sqlInterceptorType
 				+ ", sqlInterceptorFile=" + sqlInterceptorFile

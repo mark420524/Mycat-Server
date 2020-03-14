@@ -42,7 +42,7 @@ public class IncrSequenceMySQLHandler implements SequenceHandler {
 	public static IncrSequenceMySQLHandler getInstance() {
 		return IncrSequenceMySQLHandlerHolder.instance;
 	}
-
+	public static String SequenceDefaultDataNode = "";
 	public IncrSequenceMySQLHandler() {
 
 		load();

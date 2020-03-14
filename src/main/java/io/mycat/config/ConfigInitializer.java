@@ -96,6 +96,7 @@ public class ConfigInitializer {
 		this.cluster = initCobarCluster(configLoader);
 		
 		//不同类型的全局序列处理器的配置加载
+		/*  修改if 判断为switch case start
 		if (system.getSequnceHandlerType() == SystemConfig.SEQUENCEHANDLER_MYSQLDB) {
 			IncrSequenceMySQLHandler.getInstance().load();
 		}
@@ -111,7 +112,23 @@ public class ConfigInitializer {
 		if (system.getSequnceHandlerType() == SystemConfig.SEQUENCEHANDLER_ZK_GLOBAL_INCREMENT) {
 			IncrSequenceZKHandler.getInstance().load();
 		}
-		
+		*/
+		switch (system.getSequenceHandlerType()) {
+			case SystemConfig.SEQUENCEHANDLER_MYSQLDB:
+				IncrSequenceMySQLHandler.getInstance().load();
+				IncrSequenceMySQLHandler.SequenceDefaultDataNode= system.getDefaultSequenceDataNode();
+				break;
+			case SystemConfig.SEQUENCEHANDLER_LOCAL_TIME:
+				IncrSequenceTimeHandler.getInstance().load();
+				break;
+			case SystemConfig.SEQUENCEHANDLER_ZK_DISTRIBUTED:
+				DistributedSequenceHandler.getInstance(system).load();
+				break;
+			case SystemConfig.SEQUENCEHANDLER_ZK_GLOBAL_INCREMENT:
+				IncrSequenceZKHandler.getInstance().load();
+				break;
+			default:break;
+		}
 		/**
 		 * 配置文件初始化， 自检
 		 */
