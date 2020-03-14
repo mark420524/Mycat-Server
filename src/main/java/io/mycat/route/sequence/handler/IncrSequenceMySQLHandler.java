@@ -87,6 +87,11 @@ public class IncrSequenceMySQLHandler implements SequenceHandler {
 	@Override
 	public long nextId(String seqName) {
 		SequenceVal seqVal = seqValueMap.get(seqName);
+		if (seqVal==null )  {
+			//默认从default data node读库,不需要在启动mycat
+			seqVal = new SequenceVal(seqName, SequenceDefaultDataNode);
+			seqValueMap.put(seqName,seqVal);
+		}
 		if (seqVal == null) {
 			throw new ConfigException("can't find definition for sequence :"
 					+ seqName);
