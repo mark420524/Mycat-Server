@@ -19,7 +19,7 @@
 	<property name="useGlobleTableCheck">0</property>  <!-- 1为开启全加班一致性检测、0为关闭 -->
 		<property name="sqlExecuteTimeout">300</property>  <!-- SQL 执行超时 单位:秒-->
 		<property name="sequenceHandlerType">1</property>
-		<property name="defaultSequenceDataNode">1</property>
+		<property name="defaultSequenceDataNode">dn1</property>
 		<!--<property name="sequenceHandlerPattern">(?:(\s*next\s+value\s+for\s*MYCATSEQ_(\w+))(,|\)|\s)*)+</property>
 		INSERT INTO `travelrecord` (`id`,user_id) VALUES ('next value for MYCATSEQ_GLOBAL',"xxx");
 		-->
